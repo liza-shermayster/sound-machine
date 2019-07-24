@@ -1,15 +1,18 @@
 html {
     font-size: 10px;
-    background: url("alex-king-tWe_7YP8w9o-unsplash.jpg") bottom center;
+    background: url("alex-king-tWe_7YP8w9o-unsplash.jpg")  center;
     background-size: cover;
+  
+ 
 }
 
 body,html {
-    margin: 0;
+    margin: auto;
     padding: 0;
     font-family: sans-serif;
   }
 .keys {
+
     display: flex;
     flex: 1;
     min-height: 100vh;
