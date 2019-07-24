@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>30 day JavaScript</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='day-1.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+
+  <div class="keys">
+        <div data-key="65" class="key">
+          <kbd>A</kbd>
+          <span class="sound">ocean</span>
+        </div>
+        <div data-key="83" class="key">
+          <kbd>S</kbd>
+          <span class="sound">ocean</span>
+        </div>
+        <div data-key="68" class="key">
+          <kbd>D</kbd>
+          <span class="sound">ocean</span>
+        </div>
+        <div data-key="70" class="key">
+          <kbd>F</kbd>
+          <span class="sound">ocean</span>
+        </div>
+      </div>
+    <audio data-key="65" src="OceanSurg.wav"></audio>
+    <audio data-key="83" src="OceanSurg.wav"></audio>
+    <audio data-key="68" src="OceanSurg.wav"></audio>
+    <audio data-key="70" src="OceanSurg.wav"></audio>
+     
+
+<script>
+        function removeTransition(e) {
+          if (e.propertyName !== 'transform') return;
+          e.target.classList.remove('playing');
+        }
+        function playSound(e) {
+            console.log('playSound',e);
+          const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+          const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
+          if (!audio) return;
+          key.classList.add('playing');
+          audio.currentTime = 0;
+          audio.play();
+        }
+        const keys = Array.from(document.querySelectorAll('.key'));
+        keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+        window.addEventListener('keydown', playSound);
+      </script>
+     
+</body>
+</html>
